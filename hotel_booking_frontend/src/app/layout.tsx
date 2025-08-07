@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+
 export const metadata: Metadata = {
-  title: "Minimal Next.js App",
-  description: "Ultra-minimal Next.js application",
+  title: "Hotel Booking Platform",
+  description: "Find, book, and manage hotel stays easily",
 };
 
+/**
+ * The Master Layout for All Pages
+ * Injects header, footer, navigation, and modals.
+ */
 export default function RootLayout({
   children,
 }: {
@@ -13,8 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        {children}
+      <body className="flex flex-col min-h-screen bg-background font-sans" suppressHydrationWarning>
+        <Header />
+        <main className="flex-1 w-full">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
